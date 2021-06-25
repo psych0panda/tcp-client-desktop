@@ -31,7 +31,7 @@
                   <input style="background-color: #4a4e69;color:snow;" type="number" id="port" class="form-control" placeholder="e.g. 8888">
                 </div>
                 <div class="form-group-pading">
-                  <label>Message</label>
+                  <label>Request</label>
                   <textarea style="background-color: #4a4e69;color:snow;" id="message" class="form-control" rows="3" placeholder="e.g. hello server"></textarea>
                 </div>
                 <div class="form-group-pading">
@@ -48,32 +48,18 @@
             <table class="table-striped">
                 <thead>
                   <tr>
-                    <th>Destination address</th>
+                    <th>Time</th>
+                    <th>Address</th>
                     <th>Request</th>
                     <th>Response</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>127.0.0.1:33222</td>
-                    <td>hi</td>
-                    <td>hello</td>
-                  </tr>
-                  <tr>
-                    <td>127.0.0.1:33222</td>
-                    <td>hi</td>
-                    <td>hello</td>
-                  </tr>
-                  <tr>
-                    <td>127.0.0.1:33222</td>
-                    <td>hi</td>
-                    <td>hello</td>
-                  </tr>
-                  ...
-                  <tr>
-                    <td>127.0.0.1:33222</td>
-                    <td>hi</td>
-                    <td>hello</td>
+                    <td id="time_event"></td>
+                    <td id="dest_address"></td>
+                    <td id="send_message"></td>
+                    <td id="server_response"></td>
                   </tr>
                 </tbody>
             </table>
@@ -87,7 +73,11 @@
       <script>
         window.api.receive("fromMain", (data) => {
             console.log(`Received ${data} from main process`);
-            document.getElementById("response").value = data;
+            document.getElementById("response").value = data.response;
+            document.getElementById("dest_address").innerText = data.host + ":" + data.port;
+            document.getElementById("send_message").innerText = data.request
+            document.getElementById("server_response").innerText = data.response
+            document.getElementById("time_event").innerText = data.time
         });
         function sendForm(event) {
             event.preventDefault() // stop the form from submitting

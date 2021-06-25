@@ -14,7 +14,7 @@ async function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
+    width: 1200,
     height: 600,
     webPreferences: {
       nodeIntegration: false, // is default value after Electron v5
@@ -33,6 +33,7 @@ async function createWindow() {
 app.on("ready", createWindow);
 
 ipcMain.on("toMain", (event, args) => {
+    let ts = getDateTime()
     console.log("ARGS:", args)
     const conn = net.createConnection(args.port, args.host);
     conn.on('connect', function() {
@@ -41,7 +42,7 @@ ipcMain.on("toMain", (event, args) => {
     });
     conn.on('data' , function (data){
           console.log("Data received from the server: " , data.toString());
-          win.webContents.send("fromMain", data.toString());
+          win.webContents.send("fromMain", { host: args.host, port: args.port, request: args.message, response: data.toString(), time: ts});
     });
     // When connection disconnected.
     conn.on('end',function () {
@@ -55,3 +56,14 @@ ipcMain.on("toMain", (event, args) => {
         conn.destroy()
     });
 });
+
+const getDateTime = () => {
+    let date = new Date();
+    let hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    let min = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+    let sec = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+    return hour + ":" + min + ":" + sec;
+}
