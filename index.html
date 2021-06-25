@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TCPClient</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/photon.css">
+
+    <!-- Electron Javascript -->
+    <script src="main.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <!-- Wrap your entire app inside .window -->
+    <div class="window">
+      <!-- .toolbar-header sits at the top of your app -->
+      <header class="toolbar toolbar-header">
+        <h1 class="title">TCPClient</h1>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="padded-more">
+        <form name="ipcForm" onSubmit="JavaScript:sendForm(event)">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="address" class="form-control" placeholder="Host">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="message" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Response</label>
+            <input type="text" id="response" value="" class="form-control" placeholder="Response">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-form btn-primary">Send</button>
+            <button type="reset" class="btn btn-form btn-secondary">Cancel</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+      <script>
+        window.api.receive("fromMain", (data) => {
+            console.log(`Received ${data} from main process`);
+            document.getElementById("response").value = data;
+        });
+        function sendForm(event) {
+            event.preventDefault() // stop the form from submitting
+            let message = document.getElementById("message").value;
+            let address = document.getElementById("address").value;
+            window.api.send("toMain", {'host': address, 'port': 27010, 'message': message});
+}
+    </script>
+  </body>
+</html>
