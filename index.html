@@ -19,31 +19,70 @@
 
       <!-- Your app's content goes inside .window-content -->
       <div class="window-content">
-        <div class="padded-more">
-        <form name="ipcForm" onSubmit="JavaScript:sendForm(event)">
-          <div class="form-group">
-            <label>Host</label>
-            <input type="text" id="host" class="form-control" placeholder="Host">
+        <div class="pane-group">
+        <div class="pane pane-center">
+              <form name="ipcForm" onSubmit="JavaScript:sendForm(event)">
+                <div class="form-group-pading">
+                  <label>Host</label>
+                  <input style="background-color: #4a4e69;color:snow;" type="text" id="host" class="form-control" placeholder="e.g. 127.0.0.1">
+                </div>
+                <div class="form-group-pading">
+                  <label>Port</label>
+                  <input style="background-color: #4a4e69;color:snow;" type="number" id="port" class="form-control" placeholder="e.g. 8888">
+                </div>
+                <div class="form-group-pading">
+                  <label>Message</label>
+                  <textarea style="background-color: #4a4e69;color:snow;" id="message" class="form-control" rows="3" placeholder="e.g. hello server"></textarea>
+                </div>
+                <div class="form-group-pading">
+                  <label>Response</label>
+                  <input style="background-color: #4a4e69;color:snow;" type="text" id="response" disabled value="" class="form-control" placeholder="Response">
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-form btn-positive btn-large">Send</button>
+                  <button type="reset" class="btn btn-form btn-negative btn-large">Cancel</button>
+                </div>
+              </form>
           </div>
-          <div class="form-group">
-            <label>Port</label>
-            <input type="number" id="port" class="form-control" placeholder="Port">
+          <div class="pane">
+            <table class="table-striped">
+                <thead>
+                  <tr>
+                    <th>Destination address</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>127.0.0.1:33222</td>
+                    <td>hi</td>
+                    <td>hello</td>
+                  </tr>
+                  <tr>
+                    <td>127.0.0.1:33222</td>
+                    <td>hi</td>
+                    <td>hello</td>
+                  </tr>
+                  <tr>
+                    <td>127.0.0.1:33222</td>
+                    <td>hi</td>
+                    <td>hello</td>
+                  </tr>
+                  ...
+                  <tr>
+                    <td>127.0.0.1:33222</td>
+                    <td>hi</td>
+                    <td>hello</td>
+                  </tr>
+                </tbody>
+            </table>
           </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea id="message" class="form-control" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label>Response</label>
-            <input type="text" id="response" value="" class="form-control" placeholder="Response">
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-form btn-primary">Send</button>
-            <button type="reset" class="btn btn-form btn-secondary">Cancel</button>
-          </div>
-        </form>
         </div>
       </div>
+      <footer class="toolbar toolbar-footer">
+        <h1 class="title">by psychopanda</h1>
+      </footer>
     </div>
       <script>
         window.api.receive("fromMain", (data) => {

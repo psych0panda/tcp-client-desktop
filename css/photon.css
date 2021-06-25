@@ -80,7 +80,7 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit;
+  color: #ffffff;
   font: inherit;
   margin: 0;
 }
@@ -88,6 +88,7 @@ textarea {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   height: auto;
+  color: #ffffff;
 }
 
 input[type="search"] {
@@ -195,13 +196,14 @@ h6 {
   left: 0;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #2b2d42;
 }
 
 .window-content {
   position: relative;
   overflow-y: auto;
   display: flex;
+  color: snow;
   flex: 1;
 }
 
@@ -344,6 +346,7 @@ h6 {
 .btn-form {
   padding-right: 20px;
   padding-left: 20px;
+  margin: 50px;
 }
 
 .btn-default {
@@ -388,10 +391,10 @@ h6 {
 .btn-positive {
   border-color: #29a03b;
   border-bottom-color: #248b34;
-  background-color: #5bd46d;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5bd46d), color-stop(100%, #29a03b));
-  background-image: -webkit-linear-gradient(top, #5bd46d 0%, #29a03b 100%);
-  background-image: linear-gradient(to bottom, #5bd46d 0%, #29a03b 100%);
+  background-color: #1b6d46;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #106639), color-stop(100%, #106639));
+  background-image: -webkit-linear-gradient(top, #106639 0%, #106639 100%);
+  background-image: linear-gradient(to bottom, #106639 0%, #106639 100%);
 }
 .btn-positive:active {
   background-color: #34c84a;
@@ -401,12 +404,12 @@ h6 {
 }
 
 .btn-negative {
-  border-color: #fb2f29;
-  border-bottom-color: #fb1710;
-  background-color: #fd918d;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fd918d), color-stop(100%, #fb2f29));
-  background-image: -webkit-linear-gradient(top, #fd918d 0%, #fb2f29 100%);
-  background-image: linear-gradient(to bottom, #fd918d 0%, #fb2f29 100%);
+  border-color: #c3140e;
+  border-bottom-color: #a91611;
+  background-color: #912823FF;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #912823FF), color-stop(100%, #912823FF));
+  background-image: -webkit-linear-gradient(top, #912823FF 0%, #912823FF 100%);
+  background-image: linear-gradient(to bottom, #912823FF 0%, #912823FF 100%);
 }
 .btn-negative:active {
   background-color: #fc605b;
@@ -503,11 +506,11 @@ h6 {
 
 .toolbar {
   min-height: 22px;
-  box-shadow: inset 0 1px 0 #f5f4f5;
-  background-color: #e8e6e8;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8e6e8), color-stop(100%, #d1cfd1));
-  background-image: -webkit-linear-gradient(top, #e8e6e8 0%, #d1cfd1 100%);
-  background-image: linear-gradient(to bottom, #e8e6e8 0%, #d1cfd1 100%);
+  box-shadow: inset 0 1px 0 #304260;
+  background-color: #33496b;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #33496BFF), color-stop(100%, #33496b));
+  background-image: -webkit-linear-gradient(top, #33496BFF 0%, #33496BFF 100%);
+  background-image: linear-gradient(to bottom, #33496BFF 0%, #33496BFF 100%);
 }
 .toolbar:before, .toolbar:after {
   display: table;
@@ -518,14 +521,14 @@ h6 {
 }
 
 .toolbar-header {
-  border-bottom: 1px solid #c2c0c2;
+  border-bottom: 1px solid #33496b;
 }
 .toolbar-header .title {
   margin-top: 1px;
 }
 
 .toolbar-footer {
-  border-top: 1px solid #c2c0c2;
+  border-top: 1px solid #33496b;
   -webkit-app-region: drag;
 }
 
@@ -534,13 +537,13 @@ h6 {
   font-size: 12px;
   font-weight: 400;
   text-align: center;
-  color: #555;
+  color: #cad2de;
   cursor: default;
 }
 
 .toolbar-borderless {
-  border-top: 0;
-  border-bottom: 0;
+  border-top: 2px;
+  border-bottom: 2px;
 }
 
 .toolbar-actions {
@@ -596,16 +599,26 @@ input[type="checkbox"] {
   outline: none;
 }
 .form-control:focus {
-  border-color: #6db3fd;
-  box-shadow: 3px 3px 0 #6db3fd, -3px -3px 0 #6db3fd, -3px 3px 0 #6db3fd, 3px -3px 0 #6db3fd;
+  border-color: #295788;
+  box-shadow: 3px 3px 0 #295788, -3px -3px 0 #295788, -3px 3px 0 #295788, 3px -3px 0 #295788;
 }
 
 textarea {
   height: auto;
 }
 
+::placeholder {
+  color: snow;
+}
+
 .form-group {
   margin-bottom: 10px;
+}
+
+.form-group-pading {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .radio,
@@ -636,6 +649,10 @@ textarea {
 }
 .form-actions .btn:last-child {
   margin-right: 0;
+}
+
+.pane-center {
+  text-align:center;
 }
 
 .pane-group {
@@ -2213,45 +2230,45 @@ img {
 
 /* '' */
 table {
+  padding-top: 15px;
   width: 100%;
   border: 0;
   border-collapse: separate;
-  font-size: 12px;
+  font-size: 13px;
   text-align: left;
 }
 
 thead {
-  background-color: #f5f5f4;
+  background-color: #4a4e69;
 }
 
 tbody {
-  background-color: #fff;
+  background-color: #2b2d42;
 }
 
 .table-striped tr:nth-child(even) {
-  background-color: #f5f5f4;
+  background-color: #4a4e69;
 }
 
 tr:active,
 .table-striped tr:active:nth-child(even) {
-  color: #fff;
-  background-color: #116cd6;
+  color: #eff0f3;
+  background-color: #23495b;
 }
 
 thead tr:active {
-  color: #333;
-  background-color: #f5f5f4;
+  color: #eff0f3;
+  background-color: #23495b;
 }
 
 th {
   font-weight: normal;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 th,
 td {
-  padding: 2px 15px;
+  padding: 2px 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
